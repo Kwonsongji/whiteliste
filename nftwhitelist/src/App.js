@@ -42,8 +42,16 @@ function App() {
       let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       // je récupère les accounts mtn je les passe aux state setAccount :
       setAccount(accounts);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // if get BigNumber on obtient en wei la balance 
+      const balance = await provider.getBalance(accounts[0]); 
+      // wei => ether
+      const balanceInEth = ethers.utils.formatEther(balance);
+      console.log(balance);
+      console.log(balanceInEth);
+      setBalance(balanceInEth);
      
-      console.log('accounts jjj oo', accounts);
+      console.log('accounts jjj oo', accounts); 
     }
     //indiquer à l'user quelle compte il utilise 
     // account.lenght > 0 ça veut dire qu'un compte est connecté
@@ -53,7 +61,11 @@ function App() {
     <div className="App">
       {!loader &&
         accounts.length > 0 ?
-        <p> You are connected on this account: {accounts[0]} </p>
+        <div> 
+          <p> You are connected on this account: {accounts[0]} </p>
+          {balance && <p> You have : {balance} Eth on your account. </p>}
+          {balance < .3 && <p className="info-name"> You don't eth on your account to go on our whitelist </p>}
+        </div>
         :
         <p> You are not connected with Metamask to this website. </p>
       }
