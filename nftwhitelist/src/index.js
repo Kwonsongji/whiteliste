@@ -5,7 +5,7 @@ import React from 'react';
 
 /* ReactDOMClient.hydrateRoot*/
 import './index.css';
-import App from './App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 //  ReactDOM.render est devenue obsolète
 //  l'API New Root est disponible en import react-dom/client:
