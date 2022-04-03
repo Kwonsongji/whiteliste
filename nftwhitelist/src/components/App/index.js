@@ -1,10 +1,13 @@
 import { useState, useEffect} from 'react';
 import { ethers } from 'ethers';
+
 import InfosAccount from '../InfosAccounts';
-import firebase from '../Firebase';
+import AddWhitelist from '../AddWhitelist';
+import Firebase from '../Firebase';
+
 import './index.css';
 //faire une réf à cette BDD:
-const ref = firebase.firestore().collection('whitelist');
+const ref = Firebase.firestore().collection('whitelist');
  
 function App() {
 
@@ -66,7 +69,7 @@ function App() {
       console.log(balanceInEth);
       setBalance(balanceInEth);
      
-      console.log('accounts jjj oo', accounts); 
+      console.log('accounts', accounts); 
     }
     //indiquer à l'user quelle compte il utilise 
     // account.lenght > 0 ça veut dire qu'un compte est connecté
@@ -74,8 +77,23 @@ function App() {
 
   return (
     <div className="App">
-      {/* on transmets  */}
-      <InfosAccount accounts={accounts} balance={balance} loader={loader}/>
+      {error && <p className="alert error">{error} </p>}
+      {success && <p className="alert success">{success} </p>} 
+      {/* on transmets les states par les props */}
+      <InfosAccount
+        accounts={accounts}
+        balance={balance}
+        loader={loader} />
+      <AddWhitelist
+         accounts={accounts}
+        countPeople={countPeople}
+        setCountPeople={setCountPeople}
+        getCount={getCount}
+        balance={balance}
+        setBalance={setBalance}
+        setError={setError}
+        setSuccess={setSuccess}
+      />
     </div>
   );
 }
