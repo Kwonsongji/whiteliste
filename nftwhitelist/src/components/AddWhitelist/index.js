@@ -69,7 +69,7 @@ const AddWhitelist = (props) => {
       props.setError('Invalid Addresscc ');
     }
     //màj le state
-    props.getCount();
+   setTimeout(props.getCount, 500); // pour qu'il arrive à récuperer le le nbr de pers' en temps et en h 
   }
   return (
     <div> 

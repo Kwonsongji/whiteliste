@@ -13,3 +13,15 @@ https://faucet.ropsten.be/
 
 ## Ajouter un user à la whiteliste :
 npm i uuid
+addWhitelist component
+
+## Interface admin :
+npm i react-router-dom
+-go main index.js si / afficher < App /> sinon < Admin/>
+-build Admin compon'
+-go FireStore system fournit d'identification
+-auth :
+ - autoriser la fonctionalité dans signin method, fournisseur natif address e-mail mdp, 
+ - onClick 
+
+ 

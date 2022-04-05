@@ -1,11 +1,12 @@
 import React from 'react';
  import ReactDOM from 'react-dom';
 /* import * as ReactDOMClient from 'react-dom/client' ; */
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 /* ReactDOMClient.hydrateRoot*/
 import './index.css';
 import App from './components/App';
+import Admin from './components/Admin';
 import reportWebVitals from './reportWebVitals';
 //  ReactDOM.render est devenue obsolète
 //  l'API New Root est disponible en import react-dom/client:
@@ -14,8 +15,13 @@ import reportWebVitals from './reportWebVitals';
 
  
  ReactDOM.render(
-  <React.StrictMode>
-    <App />
+   <React.StrictMode>
+     <BrowserRouter>
+        <Routes>
+         <Route path="/" element={ <App/>} />
+         <Route path="/admin" element={ <Admin/>} />
+        </Routes>
+     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
