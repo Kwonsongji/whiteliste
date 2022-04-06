@@ -68,7 +68,6 @@ function App() {
       console.log(balance);
       console.log(balanceInEth);
       setBalance(balanceInEth);
-     
       console.log('accounts', accounts); 
     }
     //indiquer à l'user quelle compte il utilise 
@@ -85,7 +84,7 @@ function App() {
         balance={balance}
         loader={loader} />
       <AddWhitelist
-         accounts={accounts}
+        accounts={accounts}
         countPeople={countPeople}
         setCountPeople={setCountPeople}
         getCount={getCount}

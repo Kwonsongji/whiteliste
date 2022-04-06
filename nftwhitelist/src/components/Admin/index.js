@@ -13,7 +13,7 @@ const Admin = () => {
   const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState('false');
   const [succes, setSuccess] = useState('');
-  const [false, setFalse] = useState('');
+  const [error, setError] = useState('');
 
   // quand on récupère les datas le loading est à true
   useEffect(() => {
@@ -57,10 +57,12 @@ const Admin = () => {
     // et on rajoute l'obj dans la DB
     ref.doc(obj.id).set(obj)
       .then(result => {
-       console.log('User added on whitelist');
+        setSuccess('User added on whitelist');
+        setError('');
       })
       .catch((err) => {
-        console.log(err);
+        setSuccess('');
+        setError('User not added on whitelist');
       })
   }
  
@@ -113,6 +115,8 @@ const Admin = () => {
         </div>
         :
         <div> Listing od accounts on whiteList 
+         {error && <p className="alert error">{error} </p>}
+         {succes && <p className="alert success">{succes} </p>} 
           {loaded &&
             data.map(el => {
               return <li key={el.id}> {el.address} : { el.balance } <button value={el.id} onClick={deleteAddress}> Delete </button></li>
